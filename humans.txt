@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: Alexandros Stavrinides & 3Dots
+Site: Rock Christmas Village - Kakopetria
+Location: Nicosia, Cyprus
+
+/* SITE */
+Standards: HTML5, CSS3, Javascript
+Components: WebP images, PWA
+Software: VS Code

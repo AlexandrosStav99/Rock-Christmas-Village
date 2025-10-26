@@ -1,0 +1,54 @@
+{
+  "name": "Rock Christmas Village - Κακοπετριά",
+  "short_name": "Rock XMas Villag",
+  "description": "Ζήστε τη μαγεία των Χριστουγέννων στην καρδιά του Τροόδους",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#3b1416",
+  "theme_color": "#936336",
+  "icons": [
+    {
+      "src": "/assets/favicon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["entertainment", "lifestyle", "travel"],
+  "lang": "el-CY",
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Πρόγραμμα Εκδηλώσεων",
+      "short_name": "Πρόγραμμα",
+      "description": "Δείτε το πλήρες πρόγραμμα εκδηλώσεων",
+      "url": "/#schedule",
+      "icons": [
+        {
+          "src": "/assets/favicon/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Επικοινωνία",
+      "short_name": "Επικοινωνία",
+      "description": "Στοιχεία επικοινωνίας",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/assets/favicon/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

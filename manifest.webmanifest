@@ -1,0 +1,21 @@
+{
+  "name": "Rock Christmas Village – Κακοπετριά",
+  "short_name": "Rock XMas Village",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#3b1416",
+  "theme_color": "#936336",
+  "icons": [
+    {
+      "src": "/assets/favicon/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
