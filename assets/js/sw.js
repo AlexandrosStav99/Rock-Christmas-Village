@@ -1,88 +1,121 @@
-const CACHE_NAME = 'rcv-precache-v1';
-const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/assets/css/style.merged.min.css',
-  '/assets/js/script.js',
-  '/assets/js/footer.js',
-  '/Images/logo-maroon.png',
-  '/Images/logo-cream.png',
-  '/manifest.webmanifest'
-];
+const CACHE_NAME = 'rcv-precache-v2'; 
 
-// Install event - cache critical resources
-self.addEventListener('install', (event) => {
-  console.log('[SW] Installing Service Worker...');
+// Only cache files that definitely exist
+const PRECACHE_URLS = [
+  "/",
+  "/index.html",
+  "/assets/css/style.css",
+  "/assets/js/script.js",
+  "/assets/js/footer.js",
+  "/Images/logo-maroon.png",
+  "/Images/og-image-main-branded.png", // ← NEW: Add branded OG image
+  "/Images/og-image-twitter-branded.png", // ← NEW: Add Twitter image
+  "/Images/og-image-square-branded.png", // ← NEW: Add square image (optional)
+  "/manifest.webmanifest",
+];
+// Install event - cache files
+self.addEventListener("install", (event) => {
+  console.log("[SW] Installing Service Worker v2...");
+
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches
+      .open(CACHE_NAME)
       .then((cache) => {
-        // console.log('[SW] Caching precache resources');
-        return cache.addAll(PRECACHE_URLS);
+        console.log("[SW] Caching files...");
+
+        // Cache each file individually so one failure doesn't break everything
+        const cachePromises = PRECACHE_URLS.map((url) => {
+          return cache
+            .add(url)
+            .then(() => {
+              console.log("[SW] ✅ Cached:", url);
+            })
+            .catch((err) => {
+              console.warn("[SW] ⚠️ Failed to cache:", url, "-", err.message);
+            });
+        });
+
+        return Promise.all(cachePromises);
       })
-      .then(() => self.skipWaiting())
+      .then(() => {
+        console.log("[SW] Installation complete!");
+        return self.skipWaiting();
+      })
   );
 });
 
-// Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
-  console.log('[SW] Activating Service Worker...');
+// Activate event - clean old caches
+self.addEventListener("activate", (event) => {
+  console.log("[SW] Activating Service Worker v2...");
+
   event.waitUntil(
-    caches.keys()
-      .then((keys) =>
-        Promise.all(
-          keys.map((key) => {
-            if (key !== CACHE_NAME) {
-              // console.log('[SW] Deleting old cache:', key);
-              return caches.delete(key);
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (cacheName !== CACHE_NAME) {
+              console.log("[SW] Deleting old cache:", cacheName);
+              return caches.delete(cacheName);
             }
-            return null;
           })
-        )
-      )
-      .then(() => self.clients.claim())
+        );
+      })
+      .then(() => {
+        console.log("[SW] ✅ Service Worker activated!");
+        return self.clients.claim();
+      })
   );
 });
 
 // Fetch event - serve from cache, fallback to network
-self.addEventListener('fetch', (event) => {
-  const { request } = event;
-  
+self.addEventListener("fetch", (event) => {
   // Only handle GET requests
-  if (request.method !== 'GET') return;
+  if (event.request.method !== "GET") return;
+
+  // Skip non-http requests
+  if (!event.request.url.startsWith("http")) return;
 
   event.respondWith(
-    caches.match(request)
-      .then((cached) => {
-        if (cached) {
-          // console.log('[SW] Serving from cache:', request.url);
-          return cached;
-        }
-        
-        // Not in cache, fetch from network
-        return fetch(request)
-          .then((response) => {
-            // Don't cache non-successful responses
-            if (!response || response.status !== 200 || response.type === 'error') {
-              return response;
-            }
+    caches.match(event.request).then((cachedResponse) => {
+      // Return cached version if available
+      if (cachedResponse) {
+        return cachedResponse;
+      }
 
-            // Cache CSS/JS/Images for next time
-            const cloned = response.clone();
-            const url = new URL(request.url);
-            
-            if (/\.(css|js|png|jpg|jpeg|webp|svg|gif|woff|woff2|ttf|otf)$/i.test(url.pathname)) {
-              caches.open(CACHE_NAME).then((cache) => {
-                // console.log('[SW] Caching new resource:', request.url);
-                cache.put(request, cloned);
-              });
-            }
-            
+      // Otherwise fetch from network
+      return fetch(event.request)
+        .then((response) => {
+          // Check if valid response
+          if (
+            !response ||
+            response.status !== 200 ||
+            response.type === "error"
+          ) {
             return response;
-          })
-          .catch(() => {
-            // console.log('[SW] Fetch failed, returning cached version if available');
-            return cached;
-          });
-      })
+          }
+
+          // Clone the response
+          const responseToCache = response.clone();
+
+          // Cache static assets
+          const url = new URL(event.request.url);
+          if (
+            /\.(css|js|png|jpg|jpeg|webp|svg|gif|ico|woff|woff2|ttf)$/i.test(
+              url.pathname
+            )
+          ) {
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
+          }
+
+          return response;
+        })
+        .catch(() => {
+          // Network failed, try to return cached version
+          return caches.match(event.request);
+        });
+    })
   );
 });

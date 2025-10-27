@@ -868,7 +868,7 @@ nav {
   position: absolute;
 }
 #cover-page {
-  background-image: url("./Images/desktop-cover.png");
+  background-image: url("/Images/desktop-cover.png");
   background-size: cover;
   height: 100%;
 }
