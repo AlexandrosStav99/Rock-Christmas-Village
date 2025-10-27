@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light">
+
     <!-- ============================================
        CRITICAL CSS (Inline for faster FCP)
        ============================================ -->
@@ -27,6 +29,35 @@
         background-color: var(--cream);
         color: var(--charcoal);
         line-height: 1.6;
+      }
+      /* Prevent dark mode from affecting your site's colors */
+
+      /* Force light color scheme - this tells the browser not to apply dark mode */
+      :root {
+        color-scheme: light only;
+      }
+
+      /* Alternative: Use the prefers-color-scheme media query to override dark mode */
+      @media (prefers-color-scheme: dark) {
+        /* Reset all colors to your custom palette */
+        :root {
+          --maroon: #3b1416;
+          --bronze: #936336;
+          --pink: #d3a096;
+          --cream: #f7f3ee;
+          --charcoal: #2b2a2a;
+        }
+
+        /* Force background and text colors */
+        body {
+          background-color: var(--cream) !important;
+          color: var(--charcoal) !important;
+        }
+
+        /* Prevent any element from getting dark mode colors */
+        * {
+          color-scheme: light;
+        }
       }
 
       /* Navbar critical styles */
@@ -2319,8 +2350,8 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
           navigator.serviceWorker
-            .register("./sw.min.js",{
-              scope: "./"
+            .register("./sw.min.js", {
+              scope: "./",
             })
             .then(function (registration) {
               // console.log("✅ SW registered:", registration.scope);
