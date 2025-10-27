@@ -2320,7 +2320,7 @@
         window.addEventListener("load", function () {
           navigator.serviceWorker
             .register("./sw.min.js",{
-              scope: "/"
+              scope: "./"
             })
             .then(function (registration) {
               // console.log("✅ SW registered:", registration.scope);
