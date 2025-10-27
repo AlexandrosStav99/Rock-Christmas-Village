@@ -2319,12 +2319,14 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
           navigator.serviceWorker
-            .register("./assets/js/sw.min.js")
+            .register("./sw.min.js",{
+              scope: "/"
+            })
             .then(function (registration) {
-              console.log("✅ SW registered:", registration.scope);
+              // console.log("✅ SW registered:", registration.scope);
             })
             .catch(function (error) {
-              console.error("❌ SW registration failed:", error);
+              // console.error("❌ SW registration failed:", error);
             });
         });
       }
