@@ -4,8 +4,8 @@ const CACHE_NAME = 'rcv-precache-v2';
 const PRECACHE_URLS = [
   "../../",
   "../../index.html",
-  "./assets/css/style.css",
-  ".script.js",
+  "../css/style.css",
+  "./script.js",
   "./footer.js",
   "../../Images/logo-maroon.png",
   "../../Images/og-image-main-branded.png", // ← NEW: Add branded OG image
