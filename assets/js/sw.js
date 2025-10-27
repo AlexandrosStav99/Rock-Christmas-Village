@@ -2,16 +2,16 @@ const CACHE_NAME = 'rcv-precache-v2';
 
 // Only cache files that definitely exist
 const PRECACHE_URLS = [
-  "/",
-  "/index.html",
-  "/assets/css/style.css",
-  "/assets/js/script.js",
-  "/assets/js/footer.js",
-  "/Images/logo-maroon.png",
-  "/Images/og-image-main-branded.png", // ← NEW: Add branded OG image
-  "/Images/og-image-twitter-branded.png", // ← NEW: Add Twitter image
-  "/Images/og-image-square-branded.png", // ← NEW: Add square image (optional)
-  "/manifest.webmanifest",
+  "../../",
+  "../../index.html",
+  "../assets/css/style.css",
+  "./assets/js/script.js",
+  "./assets/js/footer.js",
+  "../../Images/logo-maroon.png",
+  "../../Images/og-image-main-branded.png", // ← NEW: Add branded OG image
+  "../../Images/og-image-twitter-branded.png", // ← NEW: Add Twitter image
+  "../../Images/og-image-square-branded.png", // ← NEW: Add square image (optional)
+  "../..//manifest.webmanifest",
 ];
 // Install event - cache files
 self.addEventListener("install", (event) => {

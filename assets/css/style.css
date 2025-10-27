@@ -234,6 +234,7 @@ nav {
   object-fit: cover;
 }
 .hero-overlay {
+    background: url("../../Images/hero.webp") center / cover no-repeat;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -868,7 +869,7 @@ nav {
   position: absolute;
 }
 #cover-page {
-  background-image: url("/Images/desktop-cover.png");
+  background-image: url("../../Images/desktop-cover.png");
   background-size: cover;
   height: 100%;
 }
