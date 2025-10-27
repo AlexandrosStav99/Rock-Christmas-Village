@@ -181,13 +181,6 @@
       href="https://rockxmasvillagekakopetria.com/"
     />
 
-    <link
-      rel="preload"
-      as="image"
-      href="./Images/hero.webp"
-      fetchpriority="high"
-    />
-
     <!-- ... rest of head ... -->
 
     <title>Rock Christmas Village – Κακοπετριά | Επίσημος Ιστότοπος</title>
@@ -534,8 +527,15 @@
         Fallback
       </video> -->
 
-      <!-- Gradient Overlay -->
-      <div class="hero-overlay" fetchpriority="high"></div>
+      <img
+        src="./Images/hero.webp"
+        alt="Rock Christmas Village"
+        class="hero-image"
+        fetchpriority="high"
+        width="1920"
+        height="1080"
+      />
+      <div class="hero-overlay"></div>
 
       <!-- Snowfall Effect -->
       <div class="snowflakes" aria-hidden="true">
@@ -2302,9 +2302,9 @@
       </div>
     </footer>
 
-    <script src="./assets/js/script.min.js"></script>
-    <script src="./assets/js/footer.min.js"></script>
-    <script>
+    <script src="./assets/js/script.min.js" defer></script>
+    <script src="./assets/js/footer.min.js" defer></script>
+    <script defer>
       window.addEventListener("load", function () {
         const loader = document.getElementById("pageLoader");
         if (loader) {
@@ -2319,7 +2319,7 @@
     </script>
 
     <!-- Register Service Worker -->
-    <script>
+    <script defer>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
           navigator.serviceWorker
