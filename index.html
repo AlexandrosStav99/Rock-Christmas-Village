@@ -105,7 +105,7 @@
     />
 
     <!-- Preload main CSS -->
-    <link rel="preload" as="style" href="./assets/css/style.css" />
+    <link rel="preload" as="style" href="./assets/css/style.min.css" />
 
     <!-- ============================================
        FONTS (async loading with fallback)
@@ -126,7 +126,7 @@
     <!-- ============================================
        MAIN CSS (with media query optimization)
        ============================================ -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.min.css" />
 
     <!-- ============================================
        FAVICON & MOBILE ICONS
@@ -181,11 +181,25 @@
       href="https://rockxmasvillagekakopetria.com/"
     />
 
+    <link
+      rel="preload"
+      as="image"
+      href="./Images/hero.webp"
+      fetchpriority="high"
+    />
+
+    <!-- ... rest of head ... -->
+
     <title>Rock Christmas Village – Κακοπετριά | Επίσημος Ιστότοπος</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rockxmasvillagekakopetria.com/" />
+    <meta
+      name="description"
+      content="Rock Christmas Village Kakopetria - Ζήσε τα πιο όμορφα σου Χριστούγεννα"
+    />
+
     <meta
       property="og:title"
       content="Rock Christmas Village Kakopetria - Ζήσε τα πιο όμορφα σου Χριστούγεννα"
@@ -521,7 +535,7 @@
       </video> -->
 
       <!-- Gradient Overlay -->
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay" fetchpriority="high"></div>
 
       <!-- Snowfall Effect -->
       <div class="snowflakes" aria-hidden="true">
@@ -2288,8 +2302,8 @@
       </div>
     </footer>
 
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/footer.js"></script>
+    <script src="./assets/js/script.min.js"></script>
+    <script src="./assets/js/footer.min.js"></script>
     <script>
       window.addEventListener("load", function () {
         const loader = document.getElementById("pageLoader");
@@ -2304,20 +2318,20 @@
       });
     </script>
 
-<!-- Register Service Worker -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker
-          .register("./assets/js/sw.js")
-          .then(function (registration) {
-            console.log('✅ SW registered:', registration.scope);
-          })
-          .catch(function (error) {
-            console.error('❌ SW registration failed:', error);
-          });
-      });
-    }
-  </script>
+    <!-- Register Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("./assets/js/sw.min.js")
+            .then(function (registration) {
+              console.log("✅ SW registered:", registration.scope);
+            })
+            .catch(function (error) {
+              console.error("❌ SW registration failed:", error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
