@@ -2,155 +2,184 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- CRITICAL: Place color-scheme meta tags BEFORE any CSS -->
-  <!-- This tells Samsung Browser you're handling color scheme yourself -->
-  <meta name="color-scheme" content="light only" />
-  <meta name="supported-color-schemes" content="light" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    </script>
+    <!-- CRITICAL: Place color-scheme meta tags BEFORE any CSS -->
+    <!-- This tells Samsung Browser you're handling color scheme yourself -->
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
 
-  <!-- ============================================
+    <!-- ============================================
      CRITICAL CSS (Inline for faster FCP)
      ============================================ -->
-  <style>
-    /* Force light mode with maximum specificity */
-    :root {
-      --maroon: #3b1416;
-      --bronze: #936336;
-      --pink: #d3a096;
-      --cream: #f7f3ee;
-      --charcoal: #2b2a2a;
-      
-      /* Tell browser we only support light mode */
-      color-scheme: light only !important;
-      supported-color-schemes: light !important;
-    }
-
-    html {
-      color-scheme: light only !important;
-    }
-
-    body {
-      color-scheme: light only !important;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background-color: var(--cream);
-      color: var(--charcoal);
-      line-height: 1.6;
-    }
-
-    /* Samsung Browser Force Dark Mode override */
-    @media (prefers-color-scheme: dark) {
+    <style>
+      /* Force light mode with maximum specificity */
       :root {
-        --maroon: #3b1416 !important;
-        --bronze: #936336 !important;
-        --pink: #d3a096 !important;
-        --cream: #f7f3ee !important;
-        --charcoal: #2b2a2a !important;
-        
+        --maroon: #3b1416;
+        --bronze: #936336;
+        --pink: #d3a096;
+        --cream: #f7f3ee;
+        --charcoal: #2b2a2a;
+        --light-bronze: #a6703d;
+
+        /* Tell browser we only support light mode */
         color-scheme: light only !important;
       }
 
-      html,
-      body {
-        background-color: #f7f3ee !important;
-        color: #2b2a2a !important;
+      html {
         color-scheme: light only !important;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background-color: var(--cream);
+        color: var(--charcoal);
+        line-height: 1.6;
+        color-scheme: light only !important;
+      }
+
+      /* Handle safe area for notched devices */
+      body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+
+      .fonts-loaded body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      .fonts-loaded h1,
+      .fonts-loaded h2,
+      .fonts-loaded .hero-title {
+        font-family: "Playfair Display", Georgia, serif;
       }
 
       * {
-        color-scheme: light only !important;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      
-      /* Specific elements that Samsung might try to darken */
+
+      /* Samsung Browser Force Dark Mode override */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --maroon: #3b1416 !important;
+          --bronze: #936336 !important;
+          --pink: #d3a096 !important;
+          --cream: #f7f3ee !important;
+          --charcoal: #2b2a2a !important;
+
+          color-scheme: light only !important;
+        }
+
+        html,
+        body {
+          background-color: #f7f3ee !important;
+          color: #2b2a2a !important;
+          color-scheme: light only !important;
+        }
+
+        * {
+          color-scheme: light only !important;
+        }
+
+        /* Specific elements that Samsung might try to darken */
+        nav {
+          background-color: #3b1416 !important;
+        }
+
+        .hero {
+          background-color: #3b1416 !important;
+        }
+
+        .footer-section {
+          background-color: #3b1416 !important;
+        }
+
+        /* Prevent image filters */
+        img,
+        video,
+        iframe {
+          filter: none !important;
+        }
+      }
+
+      /* Navbar critical styles */
       nav {
-        background-color: #3b1416 !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background-color: var(--maroon);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
       }
-      
+
+      /* Hero critical styles */
       .hero {
-        background-color: #3b1416 !important;
+        height: 100vh; /* Fallback */
+        height: 100svh; /* Modern browsers */
+        min-height: -webkit-fill-available; /* iOS Safari < 15.4 */
+        background-color: var(--maroon);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        contain: layout style paint; /* Optimize rendering */
       }
-      
-      .footer-section {
-        background-color: #3b1416 !important;
+
+      /* Loading spinner */
+      .page-loader {
+        position: fixed;
+        inset: 0;
+        background: var(--maroon);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
       }
-      
-      /* Prevent image filters */
-      img,
-      video,
-      iframe {
-        filter: none !important;
+
+      .page-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
       }
-    }
 
-    /* Navbar critical styles */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background-color: var(--maroon);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      padding: 0 2rem;
-    }
-
-    /* Hero critical styles */
-    .hero {
-      min-height: 100vh;
-      background-color: var(--maroon);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Loading spinner */
-    .page-loader {
-      position: fixed;
-      inset: 0;
-      background: var(--maroon);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-
-    .page-loader.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .loader-spinner {
-      width: 50px;
-      height: 50px;
-      border: 3px solid rgba(247, 243, 238, 0.3);
-      border-top-color: var(--cream);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+      .loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(247, 243, 238, 0.3);
+        border-top-color: var(--cream);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
       }
-    }
-  </style>
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- DNS Prefetch for other resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
     <!-- ============================================
        PRELOAD CRITICAL RESOURCES
@@ -160,9 +189,10 @@
 
     <!-- Preload critical fonts -->
     <link
-      rel="preload"
-      as="style"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'; this.onload=null;"
     />
 
     <!-- Preload main CSS -->
@@ -225,30 +255,30 @@
        OPEN GRAPH & SOCIAL META
        ============================================ -->
 
-    <link rel="canonical" href="https://rockxmasvillagekakopetria.com/" />
+    <link rel="canonical" href="https://rockxmasvillagekakopetrias.com/" />
     <link
       rel="alternate"
       hreflang="el"
-      href="https://rockxmasvillagekakopetria.com/"
+      href="https://rockxmasvillagekakopetrias.com/"
     />
     <link
       rel="alternate"
       hreflang="en"
-      href="https://rockxmasvillagekakopetria.com/?lang=en"
+      href="https://rockxmasvillagekakopetrias.com/?lang=en"
     />
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://rockxmasvillagekakopetria.com/"
+      href="https://rockxmasvillagekakopetrias.com/"
     />
 
     <!-- ... rest of head ... -->
 
-    <title>Rock Christmas Village – Κακοπετριά | Επίσημος Ιστότοπος</title>
+    <title>Rock Christmas Village – Κακοπετριάς | Επίσημος Ιστότοπος</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rockxmasvillagekakopetria.com/" />
+    <meta property="og:url" content="https://rockxmasvillagekakopetrias.com/" />
     <meta
       name="description"
       content="Rock Christmas Village Kakopetria - Ζήσε τα πιο όμορφα σου Χριστούγεννα"
@@ -264,7 +294,7 @@
     />
     <meta
       property="og:image"
-      content="https://rockxmasvillagekakopetria.com/Images/og-image-main-branded.png"
+      content="https://rockxmasvillagekakopetrias.com/Images/og-image-main-branded.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -280,7 +310,7 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta
       property="twitter:url"
-      content="https://rockxmasvillagekakopetria.com/"
+      content="https://rockxmasvillagekakopetrias.com/"
     />
     <meta
       property="twitter:title"
@@ -292,7 +322,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://rockxmasvillagekakopetria.com/Images/og-image-twitter-branded.png"
+      content="https://rockxmasvillagekakopetrias.com/Images/og-image-twitter-branded.png"
     />
     <meta
       property="twitter:image:alt"
@@ -312,12 +342,12 @@
       {
         "@context": "https://schema.org",
         "@type": "Event",
-        "name": "Rock Christmas Village Kakopetria",
+        "name": "Rock Christmas Village Kakopetrias",
         "alternateName": "Χριστουγεννιάτικο Χωριό Κακοπετριά",
         "description": "Ζήσε τα πιο όμορφα σου Χριστούγεννα στην Κακοπετριά, Τρόοδος, Κύπρος",
         "image": [
-          "https://rockxmasvillagekakopetria.com/Images/og-image-main-branded.png",
-          "https://rockxmasvillagekakopetria.com/Images/og-image-square-branded.png"
+          "https://rockxmasvillagekakopetrias.com/Images/og-image-main-branded.png",
+          "https://rockxmasvillagekakopetrias.com/Images/og-image-square-branded.png"
         ],
         "location": {
           "@type": "Place",
@@ -337,8 +367,8 @@
         },
         "organizer": {
           "@type": "Organization",
-          "name": "Rock Christmas Village Kakopetria",
-          "url": "https://rockxmasvillagekakopetria.com"
+          "name": "Rock Christmas Village Kakopetrias",
+          "url": "https://rockxmasvillagekakopetrias.com"
         },
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
@@ -350,10 +380,10 @@
       {
         "@context": "https://schema.org",
         "@type": "TouristAttraction",
-        "name": "Rock Christmas Village Kakopetria",
+        "name": "Rock Christmas Village Kakopetrias",
         "alternateName": "Χριστουγεννιάτικο Χωριό Κακοπετριά",
         "description": "Experience authentic Cypriot Christmas traditions in the mountain village of Kakopetria. Ζήσε τα πιο όμορφα σου Χριστούγεννα.",
-        "image": "https://rockxmasvillagekakopetria.com/Images/og-image-main-branded.png",
+        "image": "https://rockxmasvillagekakopetrias.com/Images/og-image-main-branded.png",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Kakopetria",
@@ -374,8 +404,8 @@
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "Rock Christmas Village Kakopetria",
-        "image": "https://rockxmasvillagekakopetria.com/Images/logo-maroon.png",
+        "name": "Rock Christmas Village Kakopetrias",
+        "image": "https://rockxmasvillagekakopetrias.com/Images/logo-maroon.png",
         "description": "Ζήσε τα πιο όμορφα σου Χριστούγεννα στην Κακοπετριά",
         "address": {
           "@type": "PostalAddress",
@@ -390,7 +420,7 @@
           "latitude": 34.9873,
           "longitude": 32.9032
         },
-        "telephone": "+357-XXXX-XXXX",
+        "telephone": "+357-22922323",
         "priceRange": "€€",
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
@@ -406,9 +436,9 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Rock Christmas Village – Κακοπετριά",
-        "url": "https://rockxmasvillagekakopetria.com/",
-        "logo": "https://rockxmasvillagekakopetria.com/Images/logo-maroon.png",
+        "name": "Rock Christmas Village – Κακοπετριάς",
+        "url": "https://rockxmasvillagekakopetrias.com/",
+        "logo": "https://rockxmasvillagekakopetrias.com/Images/logo-maroon.png",
         "sameAs": [
           "https://www.facebook.com/share/16ZoVnqe6p/",
           "https://www.instagram.com/xmasvillagekakopetria?igsh=bGxpZ3B5am10b3cy"
@@ -443,7 +473,7 @@
           }
         },
         "image": [
-          "https://rockxmasvillagekakopetria.com/Images/og-image-main-branded.png"
+          "https://rockxmasvillagekakopetrias.com/Images/og-image-main-branded.png"
         ],
         "description": "Ζήστε τη μαγεία των Χριστουγέννων στην Κακοπετριά! Εκδηλώσεις, μουσική, λιχουδιές και διασκέδαση για μικρούς και μεγάλους στο Rock Christmas Village.",
         "performer": {
@@ -453,14 +483,14 @@
         "organizer": {
           "@type": "Organization",
           "name": "Κοινοτικό Συμβούλιο Κακοπετριάς",
-          "url": "https://rockxmasvillagekakopetria.com/"
+          "url": "https://rockxmasvillagekakopetrias.com/"
         },
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "url": "https://rockxmasvillagekakopetria.com/#visit"
+          "url": "https://rockxmasvillagekakopetrias.com/#visit"
         }
       }
     </script>
@@ -472,7 +502,7 @@
         "@type": "TouristAttraction",
         "name": "Rock Christmas Village Κακοπετριάς",
         "description": "Χριστουγεννιάτικο χωριό στην καρδιά του Τροόδους με φωτισμούς, μουσική, λιχουδιές και τοπικές δημιουργίες.",
-        "image": "https://rockxmasvillagekakopetria.com/Images/og-image-main-branded.png",
+        "image": "https://rockxmasvillagekakopetrias.com/Images/og-image-main-branded.png",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Κακοπετριά",
@@ -498,7 +528,7 @@
           "opens": "10:00",
           "closes": "22:00"
         },
-        "url": "https://rockxmasvillagekakopetria.com/#visit"
+        "url": "https://rockxmasvillagekakopetrias.com/#visit"
       }
     </script>
 
@@ -512,37 +542,37 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Αρχική",
-            "item": "https://rockxmasvillagekakopetria.com/"
+            "item": "https://rockxmasvillagekakopetrias.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Σχετικά",
-            "item": "https://rockxmasvillagekakopetria.com/#about"
+            "item": "https://rockxmasvillagekakopetrias.com/#about"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Εκδηλώσεις",
-            "item": "https://rockxmasvillagekakopetria.com/#events"
+            "item": "https://rockxmasvillagekakopetrias.com/#events"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "Φωτογραφίες",
-            "item": "https://rockxmasvillagekakopetria.com/#gallery"
+            "item": "https://rockxmasvillagekakopetrias.com/#gallery"
           },
           {
             "@type": "ListItem",
             "position": 5,
             "name": "Επισκεφθείτε μας",
-            "item": "https://rockxmasvillagekakopetria.com/#visit"
+            "item": "https://rockxmasvillagekakopetrias.com/#visit"
           },
           {
             "@type": "ListItem",
             "position": 6,
             "name": "Επικοινωνία",
-            "item": "https://rockxmasvillagekakopetria.com/#contact"
+            "item": "https://rockxmasvillagekakopetrias.com/#contact"
           }
         ]
       }
@@ -562,7 +592,7 @@
         <a href="#home">
           <img
             src="./Images/logo-maroon.png"
-            alt="Rock Christmas Village – Kakopetria"
+            alt="Rock Christmas Village – Kakopetrias"
             id="nav-logo"
         /></a>
       </div>
@@ -571,7 +601,7 @@
         <a href="#about">Σχετικά</a>
         <a href="#gallery">Φωτογραφίες</a>
         <a href="#contact">Επικοινωνία</a>
-        <a href="https://kakopetria.org.cy/" target="_blank">Κακοπετριά </a>
+        <a href="https://kakopetria.org.cy/" target="_blank" rel="noopener noreferrer">Κακοπετριά </a>
       </div>
       <div class="burger">
         <span></span>
@@ -618,9 +648,9 @@
       <div class="hero-content">
         <h1 class="hero-title">
           Rock Christmas Village
-          <span class="hero-subtitle-location">Κακοπετριά</span>
+          <span class="hero-subtitle-location">Κακοπετριάς</span>
         </h1>
-        <p class="hero-subtitle">Ζήσε τα πιο όμορφα σου Χριστούγεννα</p>
+        <p class="hero-subtitle">Ζήσε τα πιο όμορφά σου Χριστούγεννα</p>
         <p class="hero-dates">22 Νοεμβρίου 2025 – 6 Ιανουαρίου 2026</p>
 
         <div class="hero-cta">
@@ -638,7 +668,7 @@
     <section class="ministry-section">
       <div class="ministry-container container">
         <!-- Ministry of Tourism Logo -->
-        <a href="https://www.mot.gov.cy/" target="_blank" rel="noopener">
+        <a href="https://www.mot.gov.cy/" target="_blank" rel="noopener noreferrer">
           <picture>
             <source
               srcset="./Images/deputy-ministry-of-tourism-2.webp"
@@ -652,12 +682,12 @@
         </a>
 
         <!-- Kakopetria Logo -->
-        <a href="https://kakopetria.org.cy/" target="_blank" rel="noopener">
+        <a href="https://kakopetria.org.cy/" target="_blank" rel="noopener noreferrer">
           <img src="./Images/kakopetria-logo.png" alt="Kakopetria Logo" />
         </a>
 
         <!-- Christmas Villages Logo -->
-        <a href="https://www.mot.gov.cy/" target="_blank" rel="noopener">
+        <a href="https://www.mot.gov.cy/" target="_blank" rel="noopener noreferrer">
           <picture>
             <source
               srcset="./Images/CHRISTMAS-VILLAGES.webp"
@@ -698,6 +728,7 @@
                 src="./Images/Kakopetria/DJI_0147.jpg"
                 alt="Κακοπετριά φωτισμένη με χριστουγεννιάτικα φώτα"
                 loading="lazy"
+                decoding="async"
               />
             </picture>
             <div class="image-overlay"></div>
@@ -855,6 +886,7 @@
                       src="./Images/Schedule/1.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="1"
                     />
 
@@ -867,6 +899,7 @@
                       src="./Images/Schedule/2.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="2"
                     />
                     <div class="page-footer">2</div>
@@ -881,6 +914,7 @@
                       src="./Images/Schedule/3.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="3"
                     />
                     <div class="page-footer">3</div>
@@ -895,6 +929,7 @@
                       src="./Images/Schedule/4.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="4"
                     />
                     <div class="page-footer">4</div>
@@ -916,6 +951,7 @@
                       src="./Images/Schedule/5.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="5"
                     />
                     <div class="page-footer">5</div>
@@ -937,6 +973,7 @@
                       src="./Images/Schedule/6.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="6"
                     />
                     <div class="page-footer">6</div>
@@ -958,6 +995,7 @@
                       src="./Images/Schedule/7.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="7"
                     />
                     <div class="page-footer">7</div>
@@ -979,6 +1017,7 @@
                       src="./Images/Schedule/8.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="8"
                     />
                     <div class="page-footer">8</div>
@@ -1001,6 +1040,7 @@
                       src="./Images/Schedule/9.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="9"
                     />
                     <div class="page-footer">9</div>
@@ -1023,6 +1063,7 @@
                       src="./Images/Schedule/10.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="10"
                     />
                     <div class="page-footer">10</div>
@@ -1037,6 +1078,7 @@
                       src="./Images/Schedule/11.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="11"
                     />
                     <div class="page-footer">11</div>
@@ -1058,6 +1100,7 @@
                       src="./Images/Schedule/12.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="12"
                     />
                     <div class="page-footer">12</div>
@@ -1079,6 +1122,7 @@
                       src="./Images/Schedule/13.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="13"
                     />
                     <div class="page-footer">13</div>
@@ -1100,6 +1144,7 @@
                       src="./Images/Schedule/14.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="14"
                     />
                     <div class="page-footer">14</div>
@@ -1121,6 +1166,7 @@
                       src="./Images/Schedule/15.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="15"
                     />
                     <div class="page-footer">15</div>
@@ -1143,6 +1189,7 @@
                       src="./Images/Schedule/16.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="16"
                     />
                     <div class="page-footer">16</div>
@@ -1165,6 +1212,7 @@
                       src="./Images/Schedule/17.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="17"
                     />
                     <div class="page-footer">17</div>
@@ -1179,6 +1227,7 @@
                       src="./Images/Schedule/18.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="18"
                     />
                     <div class="page-footer">18</div>
@@ -1200,6 +1249,7 @@
                       src="./Images/Schedule/19.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="19"
                     />
                     <div class="page-footer">19</div>
@@ -1221,6 +1271,7 @@
                       src="./Images/Schedule/20.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="20"
                     />
                     <div class="page-footer">20</div>
@@ -1242,6 +1293,7 @@
                       src="./Images/Schedule/21.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="21"
                     />
                     <div class="page-footer">21</div>
@@ -1263,6 +1315,7 @@
                       src="./Images/Schedule/22.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="22"
                     />
                     <div class="page-footer">22</div>
@@ -1285,6 +1338,7 @@
                       src="./Images/Schedule/23.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="23"
                     />
                     <div class="page-footer">23</div>
@@ -1307,6 +1361,7 @@
                       src="./Images/Schedule/24.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="24"
                     />
                     <div class="page-footer">24</div>
@@ -1321,6 +1376,7 @@
                       src="./Images/Schedule/25.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="25"
                     />
                     <div class="page-footer">25</div>
@@ -1342,6 +1398,7 @@
                       src="./Images/Schedule/26.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="26"
                     />
                     <div class="page-footer">26</div>
@@ -1363,6 +1420,7 @@
                       src="./Images/Schedule/27.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="27"
                     />
                     <div class="page-footer">27</div>
@@ -1384,6 +1442,7 @@
                       src="./Images/Schedule/28.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="28"
                     />
                     <div class="page-footer">28</div>
@@ -1405,6 +1464,7 @@
                       src="./Images/Schedule/29.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="29"
                     />
                     <div class="page-footer">29</div>
@@ -1427,6 +1487,7 @@
                       src="./Images/Schedule/30.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="30"
                     />
                     <div class="page-footer">30</div>
@@ -1449,6 +1510,7 @@
                       src="./Images/Schedule/31.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="31"
                     />
                     <div class="page-footer">31</div>
@@ -1463,6 +1525,7 @@
                       src="./Images/Schedule/32.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="32"
                     />
                     <div class="page-footer">32</div>
@@ -1484,6 +1547,7 @@
                       src="./Images/Schedule/33.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="33"
                     />
                     <div class="page-footer">33</div>
@@ -1505,6 +1569,7 @@
                       src="./Images/Schedule/34.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="34"
                     />
                     <div class="page-footer">34</div>
@@ -1526,6 +1591,7 @@
                       src="./Images/Schedule/35.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="35"
                     />
                     <div class="page-footer">35</div>
@@ -1547,6 +1613,7 @@
                       src="./Images/last-page.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="Last Page"
                     />
 
@@ -1569,6 +1636,7 @@
                       src="./Images/back-cover.webp"
                       class="img-fluid"
                       loading="lazy"
+                      decoding="async"
                       alt="Back Cover"
                     />
 
@@ -1693,6 +1761,7 @@
                       src="./Images/Kakopetria/1000026625.jpg"
                       alt="Χριστουγεννιάτικα φώτα στην Κακοπετριά"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1710,6 +1779,7 @@
                       src="./Images/Kakopetria/NEK8419.jpg"
                       alt="Ζωντανή μουσική στη σκηνή"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1727,6 +1797,7 @@
                       src="./Images/Kakopetria/NEK8629.jpg"
                       alt="Παραδοσιακές γεύσεις"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1744,6 +1815,7 @@
                       src="./Images/Kakopetria/DJI_0147.jpg"
                       alt="Χαρούμενες στιγμές"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1761,6 +1833,7 @@
                       src="./Images/Kakopetria/IMG_20250124_212645.jpg"
                       alt="Το χωριό τη νύχτα"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1778,6 +1851,7 @@
                       src="./Images/Kakopetria/IMG_20250429_052833.jpg"
                       alt="Συναυλία στην πλατεία"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1795,6 +1869,7 @@
                       src="./Images/Kakopetria/IMG_20250521_154943.jpg"
                       alt="Ζεστά ποτά και γλυκά"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1812,6 +1887,7 @@
                       src="./Images/Kakopetria/IMG_7680.jpeg"
                       alt="Παιδιά που διασκεδάζουν"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1829,6 +1905,7 @@
                       src="./Images/Kakopetria/IMG_7688.jpeg"
                       alt="Στολισμένοι δρόμοι"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1846,6 +1923,7 @@
                       src="./Images/Kakopetria/IMG_7693.jpeg"
                       alt="Καλλιτέχνες στη σκηνή"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1863,6 +1941,7 @@
                       src="./Images/Kakopetria/IMG_7694.jpeg"
                       alt="Αγορά με τοπικά προϊόντα"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1880,6 +1959,7 @@
                       src="./Images/Kakopetria/kakopetria.jpeg"
                       alt="Οικογενειακές αναμνήσεις"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1897,6 +1977,7 @@
                       src="./Images/Kakopetria/Kakopetria_River02.png"
                       alt="Οικογενειακές αναμνήσεις"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1914,6 +1995,7 @@
                       src="./Images/Kakopetria/Monopati-Vateris-1.jpg"
                       alt="Οικογενειακές αναμνήσεις"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1931,6 +2013,7 @@
                       src="./Images/Kakopetria/Monopati-Vateris-10.jpg"
                       alt="Οικογενειακές αναμνήσεις"
                       loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                 </div>
@@ -1943,6 +2026,7 @@
                     src="./Images/Kakopetria/NEK_8119.JPG"
                     alt="Οικογενειακές αναμνήσεις"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -1954,6 +2038,7 @@
                     src="./Images/Kakopetria/NEK_8158.JPG"
                     alt="Οικογενειακές αναμνήσεις"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -1999,9 +2084,9 @@
             <!-- Description -->
             <div class="visit-description">
               <p>
-                Μόλις <strong>50 λεπτά από τη Λευκωσία</strong>, το Rock
-                Christmas Village σε καλωσορίζει με φώτα, γεύσεις και μουσική.
-                Δες πώς θα έρθεις και τι να περιμένεις όταν φτάσεις.
+                Μόλις <strong>50 λεπτά - 1 ώρα από Λευκωσία και Λεμεσό</strong>,
+                το Rock Christmas Village σε καλωσορίζει με φώτα, γεύσεις και
+                μουσική. Δες πώς θα έρθεις και τι να περιμένεις όταν φτάσεις.
               </p>
             </div>
 
@@ -2032,7 +2117,7 @@
                 <div class="card-icon">🅿️</div>
                 <div class="card-content">
                   <h3 class="card-title">Στάθμευση</h3>
-                  <p class="card-text">Διαθέσιμα δωρεάν δημοτικά parking</p>
+                  <p class="card-text">Διαθέσιμα κοινοτικά parking</p>
                 </div>
               </div>
 
@@ -2050,7 +2135,7 @@
             <div class="visit-cta">
               <a
                 href="https://maps.google.com/?q=Kakopetria,Cyprus"
-                target="_blank"
+               target="_blank" rel="noopener noreferrer"
                 class="btn-visit btn-primary-visit"
               >
                 <span class="btn-icon">📍</span>
@@ -2180,7 +2265,7 @@
         <div class="contact-header">
           <h2 class="contact-title">Επικοινωνία</h2>
           <p class="contact-subtitle">
-            Μείνε σε επαφή με το Rock Christmas Village – Κακοπετριά 🎅
+            Μείνε σε επαφή με το Rock Christmas Village – Κακοπετριάς 🎅
           </p>
         </div>
 
@@ -2192,9 +2277,9 @@
             <div class="contact-item">
               <div class="contact-icon">📞</div>
               <div class="contact-content">
-                <h3 class="contact-label">Τηλέφωνο</h3>
-                <a href="tel:+35722922999" class="contact-link"
-                  >+357 22 922999</a
+                <h3 class="contact-label">Τηλεφωνο</h3>
+                <a href="tel:+35722922323" class="contact-link"
+                  >+357 22 922323</a
                 >
               </div>
             </div>
@@ -2214,7 +2299,7 @@
             <div class="contact-item">
               <div class="contact-icon">📍</div>
               <div class="contact-content">
-                <h3 class="contact-label">Τοποθεσία</h3>
+                <h3 class="contact-label">Τοποθεσια</h3>
                 <p class="contact-text">Κακοπετριά, Επαρχία Λευκωσίας</p>
               </div>
             </div>
@@ -2223,7 +2308,7 @@
             <div class="contact-item">
               <div class="contact-icon">⏰</div>
               <div class="contact-content">
-                <h3 class="contact-label">Ώρες Λειτουργίας</h3>
+                <h3 class="contact-label">Ωρες Λειτουργιας</h3>
                 <p class="contact-text">Καθημερινά 10:00 – 22:00</p>
               </div>
             </div>
@@ -2294,7 +2379,7 @@
 
           <!-- Copyright -->
           <div class="footer-copyright">
-            <p>© 2025 Rock Christmas Village – Κακοπετριά</p>
+            <p>© 2025 Rock Christmas Village – Κακοπετριάς</p>
             <p class="footer-credits">
               Με την υποστήριξη του Κοινοτικού Συμβουλίου Κακοπετριάς
             </p>
@@ -2340,7 +2425,21 @@
 
         <!-- Closing Tagline -->
         <div class="footer-tagline">
-          <p>"Ζήσε τα πιο όμορφα σου Χριστούγεννα.."</p>
+          <p>"Ζήσε τα πιο όμορφά σου Χριστούγεννα.."</p>
+        </div>
+
+        <!-- Website Attribution -->
+        <div class="website-attribution">
+          <p>
+            This website was created and maintained by
+            <a
+              href="https://3dots.com.cy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >3dots</a
+            >
+            in collaboration with Alex Stavrinides
+          </p>
         </div>
 
         <!-- Back to Top Button -->
@@ -2359,8 +2458,12 @@
       </div>
     </footer>
 
+    <!-- Critical scripts -->
     <script src="./assets/js/script.min.js" defer></script>
+
+    <!-- Non-critical footer script - load after page interactive -->
     <script src="./assets/js/footer.min.js" defer></script>
+
     <script defer>
       window.addEventListener("load", function () {
         const loader = document.getElementById("pageLoader");

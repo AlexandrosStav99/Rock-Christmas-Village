@@ -3,7 +3,7 @@
   "@type": "TouristAttraction",
   "name": "Rock Christmas Village Κακοπετριάς",
   "description": "Χριστουγεννιάτικο χωριό στην καρδιά του Τροόδους με φωτισμούς, μουσική, λιχουδιές και τοπικές δημιουργίες.",
-  "image": "https://rockxmasvillagekakopetria.com/Images/gallery/overview.jpg",
+  "image": "https://rockxmasvillagekakopetrias.com/Images/gallery/overview.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Κακοπετριά",
@@ -29,5 +29,5 @@
     "opens": "10:00",
     "closes": "22:00"
   },
-  "url": "https://rockxmasvillagekakopetria.com/#visit"
+  "url": "https://rockxmasvillagekakopetrias.com/#visit"
 }

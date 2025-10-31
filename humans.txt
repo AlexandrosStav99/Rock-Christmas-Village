@@ -1,6 +1,6 @@
 /* TEAM */
 Developer: Alexandros Stavrinides & 3Dots
-Site: Rock Christmas Village - Kakopetria
+Site: Rock Christmas Village - Kakopetrias
 Location: Nicosia, Cyprus
 
 /* SITE */
