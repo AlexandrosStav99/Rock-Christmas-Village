@@ -16,9 +16,7 @@
       "addressCountry": "CY"
     }
   },
-  "image": [
-    "https://rockxmasvillagekakopetrias.com/Images/og-image.jpg"
-  ],
+  "image": ["https://rockxmasvillage.com/Images/og-image.jpg"],
   "description": "Ζήστε τη μαγεία των Χριστουγέννων στην Κακοπετριά! Εκδηλώσεις, μουσική, λιχουδιές και διασκέδαση για μικρούς και μεγάλους στο Rock Christmas Village.",
   "performer": {
     "@type": "PerformingGroup",
@@ -27,13 +25,13 @@
   "organizer": {
     "@type": "Organization",
     "name": "Κοινοτικό Συμβούλιο Κακοπετριάς",
-    "url": "https://rockxmasvillagekakopetrias.com/"
+    "url": "https://rockxmasvillage.com/"
   },
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock",
-    "url": "https://rockxmasvillagekakopetrias.com/#visit"
+    "url": "https://rockxmasvillage.com/#visit"
   }
 }
