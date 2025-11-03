@@ -28,6 +28,7 @@
     "url": "https://rockxmasvillage.com/"
   },
   "offers": {
+    "validFrom": "01/11/2025",
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "EUR",
