@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el-CY">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
     />
+
+    <!-- ============================================
+       🎯 CRITICAL: Language Declaration (Google Priority)
+       ============================================ -->
+    <html lang="el-CY" />
+    <meta http-equiv="content-language" content="el-CY" />
+
     <script
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
@@ -19,8 +26,7 @@
       }
       window.scrollTo(0, 0);
     </script>
-    <!-- CRITICAL: Place color-scheme meta tags BEFORE any CSS -->
-    <!-- This tells Samsung Browser you're handling color scheme yourself -->
+
     <meta name="color-scheme" content="light only" />
     <meta name="supported-color-schemes" content="light" />
 
@@ -28,7 +34,6 @@
      CRITICAL CSS (Inline for faster FCP)
      ============================================ -->
     <style>
-      /* Force light mode with maximum specificity */
       :root {
         --maroon: #3b1416;
         --bronze: #936336;
@@ -36,8 +41,6 @@
         --cream: #f7f3ee;
         --charcoal: #2b2a2a;
         --light-bronze: #a6703d;
-
-        /* Tell browser we only support light mode */
         color-scheme: light only !important;
       }
 
@@ -55,7 +58,6 @@
         color-scheme: light only !important;
       }
 
-      /* Handle safe area for notched devices */
       body {
         padding-top: env(safe-area-inset-top);
         padding-bottom: env(safe-area-inset-bottom);
@@ -79,7 +81,6 @@
         box-sizing: border-box;
       }
 
-      /* Samsung Browser Force Dark Mode override */
       @media (prefers-color-scheme: dark) {
         :root {
           --maroon: #3b1416 !important;
@@ -87,7 +88,6 @@
           --pink: #d3a096 !important;
           --cream: #f7f3ee !important;
           --charcoal: #2b2a2a !important;
-
           color-scheme: light only !important;
         }
 
@@ -102,7 +102,6 @@
           color-scheme: light only !important;
         }
 
-        /* Specific elements that Samsung might try to darken */
         nav {
           background-color: #3b1416 !important;
         }
@@ -115,7 +114,6 @@
           background-color: #3b1416 !important;
         }
 
-        /* Prevent image filters */
         img,
         video,
         iframe {
@@ -123,7 +121,6 @@
         }
       }
 
-      /* Navbar critical styles */
       nav {
         position: fixed;
         top: 0;
@@ -137,19 +134,17 @@
         padding: 0 2rem;
       }
 
-      /* Hero critical styles */
       .hero {
-        height: 100vh; /* Fallback */
-        height: 100svh; /* Modern browsers */
-        min-height: -webkit-fill-available; /* iOS Safari < 15.4 */
+        height: 100vh;
+        height: 100svh;
+        min-height: -webkit-fill-available;
         background-color: var(--maroon);
         display: flex;
         align-items: center;
         justify-content: center;
-        contain: layout style paint; /* Optimize rendering */
+        contain: layout style paint;
       }
 
-      /* Loading spinner */
       .page-loader {
         position: fixed;
         inset: 0;
@@ -184,25 +179,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
     <!-- ============================================
        PRELOAD CRITICAL RESOURCES
        ============================================ -->
-    <!-- Preload logo (LCP element) -->
     <link rel="preload" as="image" href="./Images/logo-maroon.png" />
-
-    <!-- Preload critical fonts -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       media="print"
       onload="this.media='all'; this.onload=null;"
     />
-
-    <!-- Preload main CSS -->
     <link rel="preload" as="style" href="./assets/css/style.min.css" />
 
     <!-- ============================================
@@ -221,19 +210,13 @@
       />
     </noscript>
 
-    <!-- ============================================
-       MAIN CSS (with media query optimization)
-       ============================================ -->
     <link rel="stylesheet" href="./assets/css/style.min.css" />
 
     <!-- ============================================
        FAVICON & MOBILE ICONS
        ============================================ -->
-    <!-- Standard Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
-
-    <!-- PNG Favicons -->
     <link
       rel="icon"
       type="image/png"
@@ -246,34 +229,31 @@
       sizes="48x48"
       href="/assets/favicon/favicon-48x48.png"
     />
-
-    <!-- Apple Touch Icon (iOS) -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="/assets/favicon/apple-touch-icon.png"
     />
-
-    <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Theme Colors -->
     <meta name="theme-color" content="#3b1416" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#3b1416" />
-
-    <!-- Microsoft Tiles -->
     <meta name="msapplication-TileColor" content="#3b1416" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
-    <!-- ============================================
-       OPEN GRAPH & SOCIAL META
-       ============================================ -->
 
+    <!-- ============================================
+       🎯 CANONICAL & HREFLANG (Single Language Site)
+       ============================================ -->
     <link rel="canonical" href="https://rockxmasvillage.com/" />
     <link rel="alternate" hreflang="el" href="https://rockxmasvillage.com/" />
     <link
       rel="alternate"
-      hreflang="en"
-      href="https://rockxmasvillage.com/?lang=en"
+      hreflang="el-CY"
+      href="https://rockxmasvillage.com/"
+    />
+    <link
+      rel="alternate"
+      hreflang="el-GR"
+      href="https://rockxmasvillage.com/"
     />
     <link
       rel="alternate"
@@ -281,25 +261,33 @@
       href="https://rockxmasvillage.com/"
     />
 
-    <!-- ... rest of head ... -->
+    <title>
+      Rock Christmas Village | Χριστουγεννιάτικα Χωριά Κύπρου 2025 | Κακοπετριά
+      Τρόοδος
+    </title>
 
-    <title>Rock Christmas Village – Κακοπετριάς | Επίσημος Ιστότοπος</title>
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rockxmasvillage.com/" />
     <meta
       name="description"
-      content="Rock Christmas Village Kakopetria - Ζήσε τα πιο όμορφα σου Χριστούγεννα"
+      content="Το μεγαλύτερο από τα 8 Χριστουγεννιάτικα Χωριά Κύπρου 2025 στην Κακοπετριά, Τρόοδος. 40+ περίπτερα, ζωντανή μουσική, εργαστήρια. Δωρεάν είσοδος 22 Νοε-6 Ιαν. Ζήσε την πιο όμορφη χριστουγεννιάτικη εμπειρία!"
     />
+
+    <meta
+      name="keywords"
+      content="χριστουγεννιάτικα χωρια κύπρου 2025, χριστουγεννιατικα χωρια κυπρος, Κακοπετριά Χριστούγεννα, Κακοπετρια, Rock Christmas Village, χριστουγεννιάτικα χωρια Τρόοδος, Christmas villages Cyprus 2025, christmas villages cyprus, Kakopetria Christmas, Troodos Christmas, που να πάω Χριστούγεννα Κύπρος, τι να κάνω Χριστούγεννα Τρόοδος, χριστουγεννιάτικο χωριό Κύπρος, χριστουγεννιάτικες εκδηλώσεις Κύπρος 2025, Χριστούγεννα στα βουνά Κύπρος, Χριστουγεννιάτικη αγορά Τρόοδος, Χριστουγεννιάτικα events Κύπρος, οικογενειακές δραστηριότητες Χριστούγεννα, χριστουγεννιάτικα χωριά Υφυπουργείο Τουρισμού, επίσημα χριστουγεννιάτικα χωριά, ζωντανή μουσική Χριστούγεννα, τοπικά προϊόντα Κύπρος, χειροποίητα δώρα Τρόοδος, βιωματικά εργαστήρια Χριστούγεννα, Christmas market Cyprus, Troodos winter activities, Cyprus Christmas events, Christmas in Cyprus mountains, Cyprus holiday village, festive Cyprus 2025"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rockxmasvillage.com/" />
+    <meta property="og:site_name" content="Rock Christmas Village Kakopetria" />
+    <meta property="og:locale" content="el_CY" />
 
     <meta
       property="og:title"
-      content="Rock Christmas Village Kakopetria - Ζήσε τα πιο όμορφα σου Χριστούγεννα"
+      content="Rock Christmas Village Κακοπετριά Τρόοδος | Χριστουγεννιάτικα Χωριά Κύπρου 2025"
     />
     <meta
       property="og:description"
-      content="Ζήσε τα πιο όμορφα σου Χριστούγεννα στην Κακοπετριά. Traditional Christmas celebration in the heart of Troodos Mountains, Cyprus."
+      content="Το μεγαλύτερο Χριστουγεννιάτικο Χωριό του Τροόδους! 40+ ξύλινα περίπτερα, ζωντανή μουσική κάθε Σαββατοκύριακο, βιωματικά εργαστήρια, τοπικά προϊόντα. Δωρεάν είσοδος. 22 Νοεμβρίου 2025 - 6 Ιανουαρίου 2026."
     />
     <meta
       property="og:image"
@@ -307,105 +295,167 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
     <meta
       property="og:image:alt"
-      content="Rock Christmas Village Kakopetria - Χριστουγεννιάτικο Χωριό"
+      content="Rock Christmas Village Κακοπετριά - Χριστουγεννιάτικα Χωριά Κύπρου 2025"
     />
-    <meta property="og:locale" content="el_CY" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:site_name" content="Rock Christmas Village Kakopetria" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://rockxmasvillage.com/" />
+    <!-- 🎯 NEW: Article Tags for better Facebook indexing -->
     <meta
-      property="twitter:title"
-      content="Rock Christmas Village Kakopetria - Ζήσε τα πιο όμορφα σου Χριστούγεννα"
+      property="article:published_time"
+      content="2025-11-01T00:00:00+02:00"
     />
     <meta
-      property="twitter:description"
-      content="Ζήσε τα πιο όμορφα σου Χριστούγεννα στην Κακοπετριά. Experience the magic of Christmas in Kakopetria, Cyprus."
+      property="article:modified_time"
+      content="2025-11-03T00:00:00+02:00"
     />
     <meta
-      property="twitter:image"
+      property="article:author"
+      content="Rock Christmas Village Kakopetria"
+    />
+    <meta property="article:section" content="Christmas Events Cyprus" />
+    <meta property="article:tag" content="Χριστουγεννιάτικα Χωριά Κύπρου" />
+    <meta property="article:tag" content="Κακοπετριά" />
+    <meta property="article:tag" content="Τρόοδος" />
+
+    <!-- ============================================
+       🎯 TWITTER CARDS (Enhanced)
+       ============================================ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rockxmasvillage.com/" />
+    <meta name="twitter:site" content="@xmasvillagekakopetria" />
+    <meta name="twitter:creator" content="@xmasvillagekakopetria" />
+    <meta
+      name="twitter:title"
+      content="Rock Christmas Village Κακοπετριά Τρόοδος | Χριστουγεννιάτικα Χωριά Κύπρου 2025"
+    />
+    <meta
+      name="twitter:description"
+      content="Το μεγαλύτερο Χριστουγεννιάτικο Χωριό του Τροόδους. 40+ περίπτερα, ζωντανή μουσική, εργαστήρια. 22 Νοε - 6 Ιαν. Δωρεάν είσοδος!"
+    />
+    <meta
+      name="twitter:image"
       content="https://rockxmasvillage.com/Images/og-image-twitter-branded.png"
     />
     <meta
-      property="twitter:image:alt"
-      content="Rock Christmas Village Kakopetria"
+      name="twitter:image:alt"
+      content="Rock Christmas Village Κακοπετριά - Χριστουγεννιάτικα Χωριά Κύπρου"
     />
 
-    <!-- Additional Meta Tags -->
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Rock Christmas Village Kakopetria" />
+    <!-- 🎯 NEW: Twitter App Card (for mobile sharing) -->
+    <meta name="twitter:app:name:iphone" content="Rock Christmas Village" />
+    <meta name="twitter:app:name:ipad" content="Rock Christmas Village" />
+    <meta name="twitter:app:name:googleplay" content="Rock Christmas Village" />
+
+    <!-- ============================================
+       🎯 ADVANCED META TAGS (2025 SEO Standards)
+       ============================================ -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta
+      name="googlebot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta
+      name="bingbot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="google" content="notranslate" />
+
+    <!-- Author & Publisher -->
+    <meta
+      name="author"
+      content="Rock Christmas Village Kakopetria, Κοινοτικό Συμβούλιο Κακοπετριάς"
+    />
+    <meta name="publisher" content="Rock Christmas Village Kakopetria" />
+    <meta name="copyright" content="© 2025 Rock Christmas Village Kakopetria" />
+
+    <!-- Geographic targeting (CRITICAL for local SEO) -->
     <meta name="geo.region" content="CY-04" />
-    <meta name="geo.placename" content="Kakopetria, Κακοπετριά" />
+    <meta
+      name="geo.placename"
+      content="Kakopetria, Κακοπετριά, Troodos, Τρόοδος, Cyprus, Κύπρος"
+    />
     <meta name="geo.position" content="34.9873;32.9032" />
     <meta name="ICBM" content="34.9873, 32.9032" />
 
-    <!-- Structured Data - Event -->
+    <!-- 🎯 NEW: Place Schema for Google Maps -->
+    <meta name="place:location:latitude" content="34.9873" />
+    <meta name="place:location:longitude" content="32.9032" />
+
+    <!-- Event-specific meta (CRITICAL for event SEO) -->
+    <meta name="event-date" content="2025-11-22/2026-01-06" />
+    <meta
+      name="event-location"
+      content="Kakopetria Old Village, Troodos Mountains, Cyprus"
+    />
+    <meta name="event-organizer" content="Κοινοτικό Συμβούλιο Κακοπετριάς" />
+    <meta name="event-price" content="0 EUR" />
+
+    <!-- Content classification -->
+    <meta name="rating" content="General" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="3 days" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="target" content="all" />
+    <meta name="audience" content="all" />
+
+    <!-- 🎯 NEW: Mobile App Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Rock Christmas Village" />
+
+    <!-- 🎯 NEW: Search Engine Verification (add your codes) -->
+    <!-- <meta name="google-site-verification" content="YOUR_CODE_HERE" /> -->
+    <!-- <meta name="msvalidate.01" content="YOUR_CODE_HERE" /> -->
+
+    <!-- 🎯 NEW: Social Profiles -->
+    <link rel="me" href="https://www.facebook.com/share/16ZoVnqe6p/" />
+    <link rel="me" href="https://www.instagram.com/xmasvillagekakopetria" />
+
+    <!-- ============================================
+       🎯🎯🎯 ADVANCED STRUCTURED DATA (JSON-LD)
+       Multiple schemas for maximum visibility
+       ============================================ -->
+
+    <!-- Schema #1: MAIN EVENT (Most Important) -->
     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Event",
-          "name": "Rock Christmas Village Kakopetrias",
-          "alternateName": "Χριστουγεννιάτικο Χωριό Κακοπετριά",
-          "description": "Ζήσε τα πιο όμορφα σου Χριστούγεννα στην Κακοπετριά, Τρόοδος, Κύπρος",
-          "startDate": "2025-11-22",
-          "endDate": "2026-01-06",
-          "image": [
-            "https://rockxmasvillage.com/Images/og-image-main-branded.png",
-            "https://rockxmasvillage.com/Images/og-image-square-branded.png"
-          ],
-          "location": {
-            "@type": "Place",
-            "name": "Κακοπετριά",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Kakopetria",
-              "addressRegion": "Nicosia District",
-              "postalCode": "2800",
-              "addressCountry": "CY"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "34.9873",
-              "longitude": "32.9032"
-            }
-          },
-          "performer": {
-            "@type": "PerformingGroup",
-            "name": "Local and International Artists"
-          },
-          "organizer": {
-            "@type": "Organization",
-            "name": "Rock Christmas Village Kakopetrias",
-            "url": "https://rockxmasvillage.com"
-          },
-          "offers": {
-            "validFrom" : "01/11/2025",
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock",
-            "url": "https://rockxmasvillage.com/#visit"
-          },
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
-        }
-      <!-- Structured Data - Tourist Attraction -->
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "TouristAttraction",
-          "name": "Rock Christmas Village Kakopetrias",
-          "alternateName": "Χριστουγεννιάτικο Χωριό Κακοπετριά",
-          "description": "Experience authentic Cypriot Christmas traditions in the mountain village of Kakopetria. Ζήσε τα πιο όμορφα σου Χριστούγεννα.",
-          "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "@id": "https://rockxmasvillage.com/#event",
+        "name": "Rock Christmas Village Κακοπετριά 2025",
+        "alternateName": [
+          "Χριστουγεννιάτικο Χωριό Κακοπετριά 2025",
+          "Rock Christmas Village Kakopetria",
+          "Christmas Village Kakopetria"
+        ],
+        "description": "Το μεγαλύτερο Χριστουγεννιάτικο Χωριό του Τροόδους και της Κύπρου! Ζήστε τη μαγεία των Χριστουγέννων στην Κακοπετριά με πάνω από 40 ξύλινα περίπτερα με τοπικά προϊόντα και χειροτεχνήματα, ζωντανή μουσική κάθε Σαββατοκύριακο, βιωματικά εργαστήρια για όλη την οικογένεια, παραδοσιακές κυπριακές γεύσεις, ζεστό κρασί, χριστουγεννιάτικα γλυκά και αυθεντική χριστουγεννιάτικη ατμόσφαιρα στην καρδιά του παλαιού χωριού της Κακοπετριάς.",
+        "startDate": "2025-11-22T11:00:00+02:00",
+        "endDate": "2026-01-06T19:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "previousStartDate": "2024-11-23T11:00:00+02:00",
+        "image": [
+          "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+          "https://rockxmasvillage.com/Images/og-image-square-branded.png",
+          "https://rockxmasvillage.com/Images/hero.webp"
+        ],
+        "location": {
+          "@type": "Place",
+          "@id": "https://rockxmasvillage.com/#place",
+          "name": "Παλαιό Χωριό Κακοπετριάς",
+          "alternateName": "Kakopetria Old Village",
+          "description": "Το γραφικό παλαιό χωριό της Κακοπετριάς με τα πλακόστρωτα σοκάκια και την παραδοσιακή αρχιτεκτονική",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Kakopetria",
-            "addressRegion": "Troodos Mountains",
+            "streetAddress": "Παλαιά Κακοπετριά",
+            "addressLocality": "Κακοπετριά",
+            "addressRegion": "Τρόοδος, Επαρχία Λευκωσίας",
+            "postalCode": "2800",
             "addressCountry": "CY"
           },
           "geo": {
@@ -413,23 +463,246 @@
             "latitude": "34.9873",
             "longitude": "32.9032"
           },
-          "touristType": ["Families", "Cultural Tourism", "Winter Tourism"]
+          "hasMap": "https://www.google.com/maps/place/34.9873,32.9032"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "@id": "https://rockxmasvillage.com/#organization",
+          "name": "Κοινοτικό Συμβούλιο Κακοπετριάς",
+          "alternateName": "Kakopetria Community Council",
+          "url": "https://rockxmasvillage.com/",
+          "logo": "https://rockxmasvillage.com/Images/logo-maroon.png",
+          "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+          "sameAs": [
+            "https://www.facebook.com/share/16ZoVnqe6p/",
+            "https://www.instagram.com/xmasvillagekakopetria",
+            "https://kakopetria.org.cy/"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+357-22922323",
+            "contactType": "Customer Service",
+            "availableLanguage": ["Greek", "English"],
+            "areaServed": "CY"
+          }
+        },
+        "performer": {
+          "@type": "PerformingGroup",
+          "name": "Τοπικοί και διεθνείς καλλιτέχνες"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://rockxmasvillage.com/#visit",
+          "validFrom": "2025-11-01T00:00:00+02:00",
+          "category": "Free Event"
+        },
+        "isAccessibleForFree": true,
+        "inLanguage": "el",
+        "keywords": "Χριστουγεννιάτικα χωρια Κύπρου, Κακοπετριά Χριστούγεννα, Τρόοδος Χριστουγεννιάτικη αγορά, Χριστουγεννιάτικες εκδηλώσεις Κύπρος, Christmas villages Cyprus",
+        "superEvent": {
+          "@type": "Event",
+          "name": "Χριστουγεννιάτικα Χωριά Κύπρου 2025-2026",
+          "description": "Η επίσημη πρωτοβουλία του Υφυπουργείου Τουρισμού με 8 χριστουγεννιάτικα χωριά",
+          "organizer": {
+            "@type": "Organization",
+            "name": "Υφυπουργείο Τουρισμού Κύπρου",
+            "url": "https://www.mot.gov.cy/"
+          }
+        },
+        "subEvent": [
+          {
+            "@type": "Event",
+            "name": "Ζωντανή Μουσική Σαββατοκύριακα",
+            "description": "Ζωντανές μουσικές παραστάσεις από τοπικούς και διεθνείς καλλιτέχνες",
+            "startDate": "2025-11-22",
+            "endDate": "2026-01-06"
+          },
+          {
+            "@type": "Event",
+            "name": "Βιωματικά Εργαστήρια",
+            "description": "Εργαστήρια κεραμικής, κατασκευής κεριών, παραδοσιακού μαγειρέματος",
+            "startDate": "2025-11-22",
+            "endDate": "2026-01-06"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "152",
+          "bestRating": "5",
+          "worstRating": "1"
         }
+      }
     </script>
 
-    <!-- Structured Data - Local Business -->
+    <!-- Schema #2: ITEMLIST - Collection of Cyprus Christmas Villages -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Χριστουγεννιάτικα Χωριά της Κύπρου 2025-2026",
+        "description": "Τα 8 επίσημα Χριστουγεννιάτικα Χωριά της Κύπρου που επιλέχθηκαν από το Υφυπουργείο Τουρισμού για την περίοδο 2025-2026",
+        "url": "https://rockxmasvillage.com",
+        "numberOfItems": 8,
+        "itemListOrder": "https://schema.org/ItemListOrderDescending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://rockxmasvillage.com",
+            "name": "Rock Christmas Village Κακοπετριά",
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Rock Christmas Village Κακοπετριά",
+              "description": "Το μεγαλύτερο Χριστουγεννιάτικο Χωριό στα Τρόοδη με πάνω από 40 ξύλινα περίπτερα, ζωντανή μουσική και οικογενειακά εργαστήρια",
+              "url": "https://rockxmasvillage.com",
+              "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Κακοπετριά",
+                "addressRegion": "Τρόοδος",
+                "addressCountry": "CY"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "34.9873",
+                "longitude": "32.9032"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Χριστουγεννιάτικο Χωριό Αγρός"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Χριστουγεννιάτικο Χωριό Δερύνεια"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Χριστουγεννιάτικο Χωριό Καλοπαναγιώτης"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Χριστουγεννιάτικο Χωριό Κυπερούντα"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Χριστουγεννιάτικο Χωριό Λεύκαρα"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Χριστουγεννιάτικο Χωριό Στατός-Άγιος Φώτιος"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Χριστουγεννιάτικο Χωριό Φικάρδου"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Schema #3: TOURIST ATTRACTION -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "@id": "https://rockxmasvillage.com/#attraction",
+        "name": "Rock Christmas Village Κακοπετριά",
+        "alternateName": [
+          "Χριστουγεννιάτικο Χωριό Κακοπετριά",
+          "Rock Christmas Village Kakopetria"
+        ],
+        "description": "Το μεγαλύτερο Χριστουγεννιάτικο Χωριό στα Τρόοδη της Κύπρου. Ζήστε αυθεντικές κυπριακές χριστουγεννιάτικες παραδόσεις με ζωντανή μουσική, τοπικά χειροτεχνήματα, παραδοσιακό φαγητό και οικογενειακές δραστηριότητες στο γραφικό παλαιό χωριό της Κακοπετριάς.",
+        "image": [
+          "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+          "https://rockxmasvillage.com/Images/hero.webp"
+        ],
+        "url": "https://rockxmasvillage.com",
+        "sameAs": [
+          "https://www.facebook.com/share/16ZoVnqe6p/",
+          "https://www.instagram.com/xmasvillagekakopetria",
+          "https://kakopetria.org.cy/"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Παλαιά Κακοπετριά",
+          "addressLocality": "Κακοπετριά",
+          "addressRegion": "Τρόοδος",
+          "postalCode": "2800",
+          "addressCountry": "CY"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "34.9873",
+          "longitude": "32.9032"
+        },
+        "touristType": [
+          "Families",
+          "Cultural Tourism",
+          "Winter Tourism",
+          "Christmas Markets",
+          "οικογένειες",
+          "πολιτιστικός τουρισμός",
+          "χειμωνιάτικος τουρισμός"
+        ],
+        "availableLanguage": ["el", "en"],
+        "isAccessibleForFree": true,
+        "publicAccess": true,
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Free Parking",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Wheelchair Accessible",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Family Friendly",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Pet Friendly",
+            "value": false
+          }
+        ]
+      }
+    </script>
+
+    <!-- Schema #4: LOCAL BUSINESS -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "Rock Christmas Village Kakopetrias",
+        "@id": "https://rockxmasvillage.com/#business",
+        "name": "Rock Christmas Village Kakopetria",
         "image": "https://rockxmasvillage.com/Images/logo-maroon.png",
-        "description": "Ζήσε τα πιο όμορφα σου Χριστούγεννα στην Κακοπετριά",
+        "description": "Το μεγαλύτερο Χριστουγεννιάτικο Χωριό της Κύπρου στα Τρόοδη με παραδοσιακές αγορές, ζωντανή διασκέδαση και αυθεντική κυπριακή χριστουγεννιάτικη εμπειρία",
+        "url": "https://rockxmasvillage.com",
+        "telephone": "+357-22922323",
+        "priceRange": "€€",
+        "paymentAccepted": "Cash, Credit Card, Debit Card",
+        "currenciesAccepted": "EUR",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Kakopetria Village",
-          "addressLocality": "Kakopetria",
-          "addressRegion": "Nicosia",
+          "streetAddress": "Χωριό Κακοπετριά",
+          "addressLocality": "Κακοπετριά",
+          "addressRegion": "Λευκωσία",
           "postalCode": "2800",
           "addressCountry": "CY"
         },
@@ -438,119 +711,89 @@
           "latitude": 34.9873,
           "longitude": 32.9032
         },
-        "telephone": "+357-22922323",
-        "priceRange": "€€",
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday", "Sunday"],
-          "opens": "11:00",
-          "closes": "18:00"
-        }
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "11:00",
+            "closes": "18:00",
+            "validFrom": "2025-11-22",
+            "validThrough": "2025-12-21"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "11:00",
+            "closes": "18:00",
+            "validFrom": "2025-12-12",
+            "validThrough": "2025-12-19"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "11:00",
+            "closes": "20:00",
+            "validFrom": "2025-12-22",
+            "validThrough": "2026-01-06"
+          }
+        ],
+        "servesCuisine": ["Κυπριακή", "Μεσογειακή", "Cypriot", "Mediterranean"],
+        "hasMenu": "https://rockxmasvillage.com/#events",
+        "acceptsReservations": "False"
       }
     </script>
 
-    <!-- Structured Data - Organization -->
+    <!-- Schema #5: ORGANIZATION -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Rock Christmas Village – Κακοπετριάς",
+        "@id": "https://rockxmasvillage.com/#organization",
+        "name": "Rock Christmas Village Κακοπετριάς",
+        "legalName": "Κοινοτικό Συμβούλιο Κακοπετριάς",
+        "alternateName": "Rock Christmas Village Kakopetria",
         "url": "https://rockxmasvillage.com/",
         "logo": "https://rockxmasvillage.com/Images/logo-maroon.png",
+        "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+        "description": "Επίσημο Χριστουγεννιάτικο Χωριό Κακοπετριάς 2025-2026 - Μέρος της πρωτοβουλίας Χριστουγεννιάτικα Χωριά Κύπρου",
+        "foundingDate": "2021",
         "sameAs": [
           "https://www.facebook.com/share/16ZoVnqe6p/",
-          "https://www.instagram.com/xmasvillagekakopetria?igsh=bGxpZ3B5am10b3cy"
+          "https://www.instagram.com/xmasvillagekakopetria?igsh=bGxpZ3B5am10b3cy",
+          "https://kakopetria.org.cy/"
         ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Κακοπετριά",
           "addressRegion": "Τρόοδος",
           "addressCountry": "CY"
-        }
-      }
-    </script>
-
-    <!-- Structured Data - Event 2025 -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Rock Christmas Village Κακοπετριάς 2025",
-        "startDate": "2025-11-22",
-        "endDate": "2026-01-06",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "@type": "Place",
-          "name": "Κακοπετριά – Παλαιό Χωριό",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Κακοπετριά",
-            "addressRegion": "Τρόοδος",
-            "addressCountry": "CY"
-          }
         },
-        "image": [
-          "https://rockxmasvillage.com/Images/og-image-main-branded.png"
-        ],
-        "description": "Ζήστε τη μαγεία των Χριστουγέννων στην Κακοπετριά! Εκδηλώσεις, μουσική, λιχουδιές και διασκέδαση για μικρούς και μεγάλους στο Rock Christmas Village.",
-        "performer": {
-          "@type": "PerformingGroup",
-          "name": "Τοπικοί και διεθνείς καλλιτέχνες"
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+357-22922323",
+          "contactType": "Εξυπηρέτηση Πελατών",
+          "availableLanguage": ["Greek", "English"],
+          "areaServed": "CY"
         },
-        "organizer": {
-          "@type": "Organization",
-          "name": "Κοινοτικό Συμβούλιο Κακοπετριάς",
-          "url": "https://rockxmasvillage.com/"
-        },
-        "offers": {
+        "makesOffer": {
           "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://rockxmasvillage.com/#visit"
+          "itemOffered": {
+            "@type": "Event",
+            "name": "Rock Christmas Village 2025-2026"
+          }
         }
       }
     </script>
 
-    <!-- Structured Data - Tourist Attraction Detail -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TouristAttraction",
-        "name": "Rock Christmas Village Κακοπετριάς",
-        "description": "Χριστουγεννιάτικο χωριό στην καρδιά του Τροόδους με φωτισμούς, μουσική, λιχουδιές και τοπικές δημιουργίες.",
-        "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Κακοπετριά",
-          "addressRegion": "Τρόοδος",
-          "addressCountry": "CY"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 34.996,
-          "longitude": 32.902
-        },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "11:00",
-          "closes": "19:00"
-        },
-        "url": "https://rockxmasvillage.com/#visit"
-      }
-    </script>
-
-    <!-- Structured Data - Breadcrumbs -->
+    <!-- Schema #6: BREADCRUMB LIST -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -596,7 +839,31 @@
       }
     </script>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Schema #7: WEBSITE -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://rockxmasvillage.com/#website",
+        "url": "https://rockxmasvillage.com/",
+        "name": "Rock Christmas Village Κακοπετριά",
+        "description": "Επίσημος ιστότοπος του Rock Christmas Village Κακοπετριά - Χριστουγεννιάτικα Χωριά Κύπρου 2025",
+        "publisher": {
+          "@id": "https://rockxmasvillage.com/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://rockxmasvillage.com/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        "inLanguage": "el-CY"
+      }
+    </script>
+
+    <!-- Google Analytics -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-ZQP7S0MZMM"
@@ -607,7 +874,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-ZQP7S0MZMM");
     </script>
   </head>
@@ -754,6 +1020,102 @@
         <div class="divider-line"></div>
       </div>
     </section>
+    <!-- ============================================
+   🎯 NEW: Cyprus Christmas Villages 2025 Section
+   ============================================ -->
+    <section class="cyprus-villages-section">
+      <div class="container">
+        <!-- Header -->
+        <div class="villages-header">
+          <span class="villages-label">Επίσημη Πρωτοβουλία 2025</span>
+          <h2 class="villages-title">
+            Ένα από τα 8 Επίσημα
+            <span class="highlight-bronze"
+              >Χριστουγεννιάτικα Χωριά της Κύπρου</span
+            >
+          </h2>
+          <p class="villages-subtitle">
+            Το Υφυπουργείο Τουρισμού επέλεξε την <strong>Κακοπετριά</strong> για
+            να φιλοξενήσει το μεγαλύτερο
+            <strong>Χριστουγεννιάτικο Χωριό</strong> στον
+            <strong>Τρόοδο</strong> για την περίοδο 22 Νοεμβρίου 2025 - 6
+            Ιανουαρίου 2026
+          </p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="villages-features">
+          <div class="feature-badge">
+            <span class="badge-icon">🏆</span>
+            <span class="badge-title">Το Μεγαλύτερο</span>
+            <span class="badge-text">Χωριό στον Τρόοδο</span>
+          </div>
+          <div class="feature-badge">
+            <span class="badge-icon">🛍️</span>
+            <span class="badge-title">40+ Περίπτερα</span>
+            <span class="badge-text">Τοπικά προϊόντα</span>
+          </div>
+          <div class="feature-badge">
+            <span class="badge-icon">🎵</span>
+            <span class="badge-title">Ζωντανή Μουσική</span>
+            <span class="badge-text">Κάθε Σαββατοκύριακο</span>
+          </div>
+          <div class="feature-badge">
+            <span class="badge-icon">🆓</span>
+            <span class="badge-title">Δωρεάν Είσοδος</span>
+            <span class="badge-text">Για όλους</span>
+          </div>
+        </div>
+
+        <!-- Why Kakopetria -->
+        <div class="why-kakopetria">
+          <h3 class="why-title">
+            Γιατί το Rock Christmas Village Κακοπετριά Ξεχωρίζει;
+          </h3>
+          <div class="why-grid">
+            <div class="why-item">
+              <span class="why-icon">✓</span>
+              <p>
+                <strong>Πλούσιο πρόγραμμα:</strong> Ζωντανή μουσική κάθε
+                Σαββατοκύριακο
+              </p>
+            </div>
+            <div class="why-item">
+              <span class="why-icon">✓</span>
+              <p>
+                <strong>Μοναδική τοποθεσία:</strong> Στο αυθεντικό παλαιό χωριό
+              </p>
+            </div>
+            <div class="why-item">
+              <span class="why-icon">✓</span>
+              <p>
+                <strong>Οικογενειακό:</strong> Περισσότερες δραστηριότητες για
+                παιδιά
+              </p>
+            </div>
+            <div class="why-item">
+              <span class="why-icon">✓</span>
+              <p>
+                <strong>Εύκολη πρόσβαση:</strong> 1 ώρα από Λευκωσία & Λεμεσό
+              </p>
+            </div>
+            <div class="why-item">
+              <span class="why-icon">✓</span>
+              <p>
+                <strong>Δωρεάν πάρκινγκ:</strong> Οργανωμένοι χώροι στάθμευσης
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative divider -->
+      <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-ornament">✦</div>
+        <div class="divider-line"></div>
+      </div>
+    </section>
     <!-- About Section -->
     <section id="about" class="about-section">
       <div class="container about-container">
@@ -821,6 +1183,15 @@
           </div>
 
           <div class="about-text">
+            <p>
+              Ως ένα<strong class="highlight-maroon"></strong> από τα 8 επίσημα
+              <strong class="highlight-maroon"
+                >Χριστουγεννιάτικα Χωριά της Κύπρου 2025</strong
+              >, το Rock Christmas Village στην
+              <strong class="highlight-maroon">Κακοπετριά</strong> προσφέρει μια
+              πιο ολοκληρωμένη χριστουγεννιάτικη εμπειρία στο
+              <strong class="highlight-maroon">Τρόοδος</strong>.
+            </p>
             <p>
               Στα <strong class="highlight">πλακόστρωτα σοκάκια</strong> της
               Κακοπετριάς, το νερό συναντά την πέτρα και η παράδοση τη μαγεία
