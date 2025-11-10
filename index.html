@@ -437,7 +437,7 @@
         "description": "Ένα από τα Χριστουγεννιάτικα Χωριά του Τροόδους και της Κύπρου! Ζήστε τη μαγεία των Χριστουγέννων στην Κακοπετριά με πάνω από 40 ξύλινα περίπτερα με τοπικά προϊόντα και χειροτεχνήματα, ζωντανή μουσική κάθε Σαββατοκύριακο, βιωματικά εργαστήρια για όλη την οικογένεια, παραδοσιακές κυπριακές γεύσεις, ζεστό κρασί, χριστουγεννιάτικα γλυκά και αυθεντική χριστουγεννιάτικη ατμόσφαιρα στην καρδιά του παλαιού χωριού της Κακοπετριάς.",
         "startDate": "2025-11-22T11:00:00+02:00",
         "endDate": "2026-01-06T19:00:00+02:00",
-        "eventStatus": "https://schema.org/EventScheduled",
+        "eventStatus": "http://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "previousStartDate": "2024-11-23T11:00:00+02:00",
         "image": [
@@ -496,7 +496,7 @@
           "price": "0",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "url": "https://rockxmasvillage.com/#visit",
+          "url": "https://rockxmasvillage.com/",
           "validFrom": "2025-11-01T00:00:00+02:00",
           "category": "Free Event"
         },
@@ -517,11 +517,24 @@
               "addressCountry": "CY"
             }
           },
-          "eventStatus": "https://schema.org/EventScheduled",
+          "eventStatus": "http://schema.org/EventScheduled",
           "organizer": {
             "@type": "Organization",
             "name": "Υφυπουργείο Τουρισμού Κύπρου",
             "url": "https://www.mot.gov.cy/"
+          },
+          "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
+          "performer": {
+            "@type": "PerformingGroup",
+            "name": "Καλλιτέχνες από όλα τα Χριστουγεννιάτικα Χωριά Κύπρου"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.mot.gov.cy/",
+            "validFrom": "2025-11-01T00:00:00+02:00"
           }
         },
         "subEvent": [
@@ -541,7 +554,7 @@
                 "addressCountry": "CY"
               }
             },
-            "eventStatus": "https://schema.org/EventScheduled",
+            "eventStatus": "http://schema.org/EventScheduled",
             "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
             "performer": {
               "@type": "PerformingGroup",
@@ -549,13 +562,16 @@
             },
             "organizer": {
               "@type": "Organization",
-              "name": "Κοινοτικό Συμβούλιο Κακοπετριάς"
+              "name": "Κοινοτικό Συμβούλιο Κακοπετριάς",
+              "url": "https://rockxmasvillage.com/"
             },
             "offers": {
               "@type": "Offer",
               "price": "0",
               "priceCurrency": "EUR",
-              "availability": "https://schema.org/InStock"
+              "availability": "https://schema.org/InStock",
+              "url": "https://rockxmasvillage.com/",
+              "validFrom": "2025-11-22T00:00:00+02:00"
             }
           },
           {
@@ -574,14 +590,17 @@
                 "addressCountry": "CY"
               }
             },
-            "eventStatus": "https://schema.org/EventScheduled",
+            "eventStatus": "http://schema.org/EventScheduled",
             "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
             "organizer": {
               "@type": "Organization",
-              "name": "Κοινοτικό Συμβούλιο Κακοπετριάς"
+              "name": "Κοινοτικό Συμβούλιο Κακοπετριάς",
+              "url": "https://rockxmasvillage.com/"
             },
             "offers": {
               "@type": "Offer",
+              "url": "https://rockxmasvillage.com/#events",
+              "validFrom": "2025-11-22T12:00:00+02:00",
               "price": "0",
               "priceCurrency": "EUR",
               "availability": "https://schema.org/InStock"
@@ -854,8 +873,11 @@
           "itemOffered": {
             "@type": "Event",
             "name": "Rock Christmas Village 2025-2026",
+            "description": "Επισκεφθείτε το Rock Christmas Village στην Κακοπετριά με εορταστικές εκδηλώσεις, διακοσμήσεις, και παραδοσιακή Χριστουγεννιάτικη ατμόσφαιρα",
             "startDate": "2025-11-22",
             "endDate": "2026-01-06",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": "https://rockxmasvillage.com/Images/og-image-main-branded.png",
             "location": {
               "@type": "Place",
               "name": "Κακοπετριά",
@@ -864,6 +886,20 @@
                 "addressLocality": "Κακοπετριά",
                 "addressCountry": "CY"
               }
+            },
+            "organizer": {
+              "@id": "https://rockxmasvillage.com/#organization"
+            },
+            "performer": {
+              "@type": "PerformingGroup",
+              "name": "Rock Christmas Village Entertainment"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+              "url": "https://rockxmasvillage.com/"
             }
           }
         }
